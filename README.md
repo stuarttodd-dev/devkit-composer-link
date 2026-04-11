@@ -21,7 +21,7 @@
 
 This walkthrough does two things: (1) install **Composer Link** into a **throwaway main project** from your local clone, and (2) use **`composer add`** to pull in the bundled **`smoke/smoke-test-package`** so you can run **`composer linked`** and **`composer link-doctor`**.
 
-**Main project** means any folder with its own root **`composer.json`** (here **`~/composer-link-qa`**). That is your app; it is **not** the `composer-link` git clone. The plugin only registers when **`half-shell-studios/composer-link`** is a real **installed dependency** of that project—running Composer **only** inside the `composer-link` clone will **not** show `composer link` commands.
+**Main project** means any folder with its own root **`composer.json`** (here **`~/main-project`**). That is your app; it is **not** the `composer-link` git clone. The plugin only registers when **`half-shell-studios/composer-link`** is a real **installed dependency** of that project—running Composer **only** inside the `composer-link` clone will **not** show `composer link` commands.
 
 ### 1. Optional — refresh the smoke library inside the clone
 
@@ -37,7 +37,7 @@ Skip if `smoke/test-package/` already looks right.
 Use a **new directory outside** the clone (name it anything you like):
 
 ```bash
-mkdir -p ~/composer-link-qa && cd ~/composer-link-qa
+mkdir -p ~/main-project && cd ~/main-project
 composer init --name="qa/consumer" --require="php:^8.3" --no-interaction
 composer config version 1.0.0
 ```
@@ -51,7 +51,7 @@ cd /path/to/composer-link
 pwd -P
 ```
 
-In **`~/composer-link-qa/composer.json`**, merge a **`repositories`** block like this (use **your** `pwd` output as **`url`**):
+In **`~/main-project/composer.json`**, merge a **`repositories`** block like this (use **your** `pwd` output as **`url`**):
 
 ```json
 "repositories": {
@@ -65,7 +65,7 @@ In **`~/composer-link-qa/composer.json`**, merge a **`repositories`** block like
 Then install the plugin:
 
 ```bash
-cd ~/composer-link-qa
+cd ~/main-project
 composer require --dev "half-shell-studios/composer-link:@dev"
 ```
 
