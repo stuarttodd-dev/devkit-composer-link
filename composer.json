@@ -1,11 +1,17 @@
 {
-    "name": "halfshellstudios/package-sample",
-    "type": "library",
+    "name": "half-shell-studios/composer-link",
+    "description": "Link local Composer packages via path repositories. Composer plugin: `composer link`, `composer add`, `link-help`, `local-bootstrap`, `local-install`, and related commands.",
+    "type": "composer-plugin",
     "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "HalfShellStudios\\PackageSample\\": "src/"
+            "HalfShellStudios\\ComposerLink\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -16,20 +22,26 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.3",
-        "larapack/dd": "^1.1"
+        "composer-plugin-api": "^2.2",
+        "composer/semver": "^3.4",
+        "symfony/console": "^6.4|^7.0",
+        "symfony/filesystem": "^6.4|^7.0",
+        "symfony/process": "^6.4|^7.0"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.10",
+        "pestphp/pest": "^3.0",
         "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^1.12",
         "rector/rector": "^1.2",
-        "pestphp/pest-plugin-drift": "^3.0"
+        "squizlabs/php_codesniffer": "^3.10",
+        "composer/composer": "^2.7"
     },
     "scripts": {
         "tests": "./vendor/bin/pest",
+        "test:coverage": "./vendor/bin/pest --coverage",
         "phpcs": "./vendor/bin/phpcs --standard=PSR12 --report=summary src/",
         "phpcbf": "./vendor/bin/phpcbf --standard=PSR12 src/",
-        "phpmd": "./vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode",
+        "phpmd": "./vendor/bin/phpmd src/ text phpmd.xml",
         "phpstan": "./vendor/bin/phpstan analyse src/ --level max",
         "rector:dry-run": "./vendor/bin/rector process --dry-run",
         "rector": "./vendor/bin/rector process",
@@ -42,11 +54,17 @@
         "standards:fix": [
             "@phpcbf",
             "@rector"
-        ]
+        ],
+        "smoke:scaffold": "php scripts/smoke-scaffold.php"
     },
     "config": {
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "half-shell-studios/composer-link": true
         }
+    },
+    "extra": {
+        "class": "HalfShellStudios\\ComposerLink\\Plugin\\ComposerLinkPlugin",
+        "plugin-optional": true
     }
 }
