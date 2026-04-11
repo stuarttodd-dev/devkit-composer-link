@@ -26,21 +26,25 @@ final class BufferOutput implements ComposerLinkOutput
     /** @var list<array{0: list<string>, 1: list<list<string>>}> */
     public array $tables = [];
 
+    #[\Override]
     public function info(string $message): void
     {
         $this->infos[] = $message;
     }
 
+    #[\Override]
     public function error(string $message): void
     {
         $this->errors[] = $message;
     }
 
+    #[\Override]
     public function warn(string $message): void
     {
         $this->warnings[] = $message;
     }
 
+    #[\Override]
     public function line(string $message): void
     {
         $this->lines[] = $message;
@@ -50,6 +54,7 @@ final class BufferOutput implements ComposerLinkOutput
      * @param list<string> $headers
      * @param list<list<string>> $rows
      */
+    #[\Override]
     public function table(array $headers, array $rows): void
     {
         $this->tables[] = [$headers, $rows];

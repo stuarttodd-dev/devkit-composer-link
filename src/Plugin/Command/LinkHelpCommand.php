@@ -13,6 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 final class LinkHelpCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('link-help');
@@ -40,6 +41,7 @@ HELP
         );
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

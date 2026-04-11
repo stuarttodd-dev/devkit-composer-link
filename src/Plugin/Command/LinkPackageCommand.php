@@ -14,6 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class LinkPackageCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('link');
@@ -25,6 +26,7 @@ final class LinkPackageCommand extends AbstractComposerLinkCommand
         $this->addOption('no-symlink', null, InputOption::VALUE_NONE, 'Disable symlink for the path repository');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

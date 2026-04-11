@@ -14,6 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class AddPackageCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('add');
@@ -26,6 +27,7 @@ final class AddPackageCommand extends AbstractComposerLinkCommand
         $this->addOption('no-symlink', null, InputOption::VALUE_NONE, 'Disable symlink');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

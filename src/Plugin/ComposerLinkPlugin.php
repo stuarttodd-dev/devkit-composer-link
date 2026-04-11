@@ -17,18 +17,22 @@ use Composer\Plugin\Capability\CommandProvider as CommandProviderCapability;
  */
 final class ComposerLinkPlugin implements PluginInterface, Capable
 {
+    #[\Override]
     public function activate(Composer $composer, IOInterface $io): void
     {
     }
 
+    #[\Override]
     public function deactivate(Composer $composer, IOInterface $io): void
     {
     }
 
+    #[\Override]
     public function uninstall(Composer $composer, IOInterface $io): void
     {
     }
 
+    #[\Override]
     public function getCapabilities(): array
     {
         return [

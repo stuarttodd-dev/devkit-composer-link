@@ -21,7 +21,7 @@ use HalfShellStudios\ComposerLink\Support\Json;
  */
 final class LocalOverrideStore
 {
-    private const LEGACY_OVERRIDES_BASENAME = 'composer.local-packages.json';
+    private const string LEGACY_OVERRIDES_BASENAME = 'composer.local-packages.json';
 
     public function __construct(
         private readonly string $filePath,

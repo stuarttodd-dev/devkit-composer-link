@@ -17,6 +17,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 final class LocalInstallCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('local-install');
@@ -29,6 +30,7 @@ final class LocalInstallCommand extends AbstractComposerLinkCommand
         $this->addOption('no-scripts', null, InputOption::VALUE_NONE, 'Skip running scripts');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

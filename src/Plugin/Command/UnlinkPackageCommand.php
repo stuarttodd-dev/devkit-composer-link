@@ -13,6 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class UnlinkPackageCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('unlink');
@@ -22,6 +23,7 @@ final class UnlinkPackageCommand extends AbstractComposerLinkCommand
         $this->addOption('remove', null, InputOption::VALUE_NONE, 'For bootstrap packages: remove dependency');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

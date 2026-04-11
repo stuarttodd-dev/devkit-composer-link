@@ -13,6 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class PromotePackageCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('promote');
@@ -22,6 +23,7 @@ final class PromotePackageCommand extends AbstractComposerLinkCommand
         $this->addOption('no-update', null, InputOption::VALUE_NONE, 'Do not run composer update');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

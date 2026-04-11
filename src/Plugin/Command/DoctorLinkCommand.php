@@ -11,12 +11,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class DoctorLinkCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('link-doctor');
         $this->setDescription('Check composer-link setup (gitignore, paths)');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

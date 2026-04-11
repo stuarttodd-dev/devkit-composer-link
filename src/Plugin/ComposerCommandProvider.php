@@ -18,6 +18,7 @@ use HalfShellStudios\ComposerLink\Plugin\Command\UnlinkPackageCommand;
 
 final class ComposerCommandProvider implements CommandProvider
 {
+    #[\Override]
     public function getCommands(): array
     {
         return [

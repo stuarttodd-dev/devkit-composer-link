@@ -18,6 +18,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 final class LocalBootstrapCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('local-bootstrap');
@@ -25,6 +26,7 @@ final class LocalBootstrapCommand extends AbstractComposerLinkCommand
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Overwrite existing composer.local.json');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

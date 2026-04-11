@@ -11,12 +11,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class LinkedPackagesCommand extends AbstractComposerLinkCommand
 {
+    #[\Override]
     protected function configure(): void
     {
         $this->setName('linked');
         $this->setDescription('List packages managed by composer-link (not the same as `composer status`)');
     }
 
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

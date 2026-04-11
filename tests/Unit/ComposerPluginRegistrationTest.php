@@ -17,7 +17,7 @@ test('command provider registers all plugin commands', function (): void {
     $provider = new ComposerCommandProvider();
     $commands = $provider->getCommands();
     expect($commands)->toHaveCount(10);
-    $names = array_map(static fn ($c) => $c->getName(), $commands);
+    $names = array_map(static fn ($c): ?string => $c->getName(), $commands);
     expect($names)->toContain('link')
         ->and($names)->toContain('add')
         ->and($names)->toContain('unlink')
