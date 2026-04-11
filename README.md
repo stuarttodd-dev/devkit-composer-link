@@ -12,7 +12,7 @@
 
 **Imagine this:** you’ve got a main project repository. It depends on several packages. You need to work on one of them and **test that everything still works** before you ship anything—so you edit the root **`composer.json`** to point at a **local path**. Annoying, but okay. You run Composer, **`vendor/`** is wired to your checkout, you change the package, it works. Then you have to **change the main project’s `composer.json` back**, clean up the mess, and hope you didn’t leave half a path repository behind. Nobody’s got time for that loop every time—and you want to **come back later** and have the same setup **without doing the whole dance again**.
 
-**Composer Link** is a **Composer plugin** for that: **point dependencies at real folders** without hand-merging JSON like it’s 2004, **without** accidentally committing `../Desktop/my-fork` to `main`, and **without** explaining to CI why `vendor/` is a haunted house.
+**Composer Link** is a **Composer plugin** for that: **point dependencies at real folders** without hand-merging JSON like it’s 2004, **without** accidentally committing `../Desktop/my-fork` to `main`.
 
 **Requirements:** PHP **8.3+** (this package is developed and tested on PHP 8.3, I know... but PHPMD doesn't support anything higher than 8.3 currently..).
 
