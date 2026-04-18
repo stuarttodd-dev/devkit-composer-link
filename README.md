@@ -74,66 +74,6 @@ If the package is installed correctly, `composer list` will include:
 | **`local-install`** | Install using local manifest (`COMPOSER=composer.local.json`). |
 | **`link-help`** | Print a concise command/arguments/options overview in terminal. |
 
-## Quick start (smoke test)
-
-This validates the plugin in a temporary app and exercises `add`, `linked`, and `link-doctor`.
-The plugin install in this quick start uses **Packagist**.
-
-### 1) Create a temporary app
-
-```bash
-mkdir -p ~/main-project && cd ~/main-project
-composer init --name="qa/consumer" --require="php:^8.3" --no-interaction
-composer config version 1.0.0
-```
-
-### 2) Install Composer Link from Packagist
-
-```bash
-composer require --dev devkit/composer-link
-```
-
-### 3) Prepare a local test package path
-
-Use any local package checkout to test linking/bootstrap. For example:
-
-```bash
-ls /path/to/local/package/composer.json
-```
-
-If you want to use this repository's bundled smoke package:
-
-```bash
-cd /path/to/devkit-composer-link
-composer run smoke:scaffold
-```
-
-Then use this path in the next step:
-
-```bash
-/path/to/devkit-composer-link/smoke/test-package
-```
-
-### 4) Add local dependency through Composer Link
-
-```bash
-cd ~/main-project
-composer add smoke/smoke-test-package /path/to/devkit-composer-link/smoke/test-package
-```
-
-### 5) Verify
-
-```bash
-composer linked
-composer link-doctor
-```
-
-Remove the smoke test dependency when done:
-
-```bash
-composer unlink smoke/smoke-test-package --remove
-```
-
 ## Configuration
 
 Composer Link reads optional config from root `composer.json` under `extra.composer-link`.
