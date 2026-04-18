@@ -2,7 +2,6 @@
     "name": "devkit/composer-link",
     "description": "Link local Composer packages via path repositories. Composer plugin: `composer link`, `composer add`, `link-help`, `local-bootstrap`, `local-install`, and related commands.",
     "type": "composer-plugin",
-    "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
