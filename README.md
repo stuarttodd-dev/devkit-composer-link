@@ -3,8 +3,6 @@
   <p><strong>Composer Link</strong><br /><em>Local package path overrides for Composer.</em></p>
 </div>
 
-> **Beta software.** APIs and file names may change between releases. Test in a temporary project first, then pin the package version for your team.
-
 # devkit-composer-link
 
 **Local path overrides for Composer dependencies**, with a separate local manifest so your committed `composer.json` and `composer.lock` stay clean.
@@ -32,13 +30,6 @@ Install in the **consuming application** (not in the library repo you are editin
 
 ```bash
 composer require --dev devkit/composer-link
-```
-
-If you need VCS install from a fork/repo:
-
-```bash
-composer require --dev devkit/composer-link:^1.0 \
-  --repository='{"type":"vcs","url":"https://github.com/stuarttodd-dev/composer-link.git"}'
 ```
 
 ## Allow the plugin (Composer 2.2+)
