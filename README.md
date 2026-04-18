@@ -77,15 +77,9 @@ If the package is installed correctly, `composer list` will include:
 ## Quick start (smoke test)
 
 This validates the plugin in a temporary app and exercises `add`, `linked`, and `link-doctor`.
+The plugin install in this quick start uses **Packagist**.
 
-### 1) (Optional) refresh bundled smoke package
-
-```bash
-cd /path/to/composer-link
-composer smoke:scaffold
-```
-
-### 2) Create a temporary app
+### 1) Create a temporary app
 
 ```bash
 mkdir -p ~/main-project && cd ~/main-project
@@ -93,40 +87,41 @@ composer init --name="qa/consumer" --require="php:^8.3" --no-interaction
 composer config version 1.0.0
 ```
 
-### 3) install Composer Link from local clone
-
-Get clone absolute path:
+### 2) Install Composer Link from Packagist
 
 ```bash
-cd /path/to/composer-link
-pwd -P
+composer require --dev devkit/composer-link
 ```
 
-Add a path repo in `~/main-project/composer.json`:
+### 3) Prepare a local test package path
 
-```json
-"repositories": {
-  "composer-link": {
-    "type": "path",
-    "url": "/path/to/composer-link"
-  }
-}
+Use any local package checkout to test linking/bootstrap. For example:
+
+```bash
+ls /path/to/local/package/composer.json
 ```
 
-Then require it:
+If you want to use this repository's bundled smoke package:
+
+```bash
+cd /path/to/devkit-composer-link
+composer run smoke:scaffold
+```
+
+Then use this path in the next step:
+
+```bash
+/path/to/devkit-composer-link/smoke/test-package
+```
+
+### 4) Add local dependency through Composer Link
 
 ```bash
 cd ~/main-project
-composer require --dev "devkit/composer-link:@dev"
+composer add smoke/smoke-test-package /path/to/devkit-composer-link/smoke/test-package
 ```
 
-### 4) add bundled smoke dependency
-
-```bash
-composer add smoke/smoke-test-package /path/to/composer-link/smoke/test-package
-```
-
-### 5) verify
+### 5) Verify
 
 ```bash
 composer linked
@@ -351,19 +346,6 @@ composer local-install
 ```
 
 Before merging release work, align committed manifest/lock with intended published constraints (via `promote`, `unlink`, or normal manifest edits).
-
-## QA notes (for this repository)
-
-Running Composer in this plugin repository alone does **not** register plugin commands, because Composer plugins activate when installed as dependencies of another project.
-
-For a full step-by-step manual test plan, use [`QA.md`](./QA.md).
-
-Validate in a separate main project:
-
-```bash
-composer list | grep -E '^\s+(link|add|unlink|promote|linked|refresh|link-doctor|local-bootstrap|local-install|link-help)\s'
-composer help link
-```
 
 ## Development
 
