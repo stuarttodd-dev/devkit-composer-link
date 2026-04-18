@@ -1,5 +1,5 @@
 {
-    "name": "half-shell-studios/composer-link",
+    "name": "devkit/composer-link",
     "description": "Link local Composer packages via path repositories. Composer plugin: `composer link`, `composer add`, `link-help`, `local-bootstrap`, `local-install`, and related commands.",
     "type": "composer-plugin",
     "version": "1.0.0",
@@ -17,6 +17,12 @@
     "authors": [
         {
             "name": "Stuart Todd"
+        }
+    ],
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://buymeacoffee.com/stuarttodd"
         }
     ],
     "minimum-stability": "stable",
@@ -60,7 +66,7 @@
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "half-shell-studios/composer-link": true
+            "devkit/composer-link": true
         }
     },
     "extra": {
