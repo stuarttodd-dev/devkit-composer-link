@@ -287,22 +287,6 @@ composer local-install
 
 Before merging release work, align committed manifest/lock with intended published constraints (via `promote`, `unlink`, or normal manifest edits).
 
-## Development
-
-```bash
-git clone git@github.com:stuarttodd-dev/composer-link.git
-cd composer-link
-docker compose build && docker compose up -d
-docker exec composer-link composer install
-docker exec composer-link composer standards:check
-docker exec composer-link composer tests
-```
-
-Tests:
-
-- `composer tests` (Pest unit + integration)
-- `composer test:coverage` (requires PCOV or Xdebug)
-
 ## Support
 
 If this project saves you time and you want to support future updates:
